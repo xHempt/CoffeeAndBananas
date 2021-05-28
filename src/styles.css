@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+/* big selectors */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5vh;
+}
+
+body {
+  min-height: 100vh;
+  background: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 4.5vw, 6rem);
+}
+
+p {
+  font-size: clamp(0.2rem, 0.75vw, 1.5rem);
+}
+
+.gold {
+  color: #f39f22;
+}
+
+/*================================================
+                      HEADER
+  ================================================*/
+
+/* header styles */
+
+header {
+  min-height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+}
+
+header nav {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+header li {
+  font-size: clamp(0.5rem, 1vw, 1.5rem);
+  margin: 0 1.75vw;
+  position: relative;
+  min-height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5vh;
+}
+
+/* cool underline effect on the header items */
+
+header ul:first-child li::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #f39f22;
+  left: 0;
+  bottom: 0;
+  transform: scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+header ul:first-child li:hover::after {
+  transform: scale(1, 1);
+}
+
+/* header search form styles */
+
+header form {
+  display: flex;
+}
+
+header button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-right: 1rem;
+  transform: translateY(2px) scale(0.75);
+}
+
+header input {
+  border: none;
+  padding: 0 0.5rem;
+}
+
+/* specific styles to sign up button */
+
+#sign-up {
+  background: #d6850c;
+  display: inline-block;
+  min-height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  color: #fff;
+}
+
+#sign-up:hover {
+  background: #f39f22;
+}
+
+/*================================================
+                    MAIN PAGE
+  ================================================*/
+
+/* landing section */
+
+.land {
+  position: relative;
+  height: 80vh;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  text-align: center;
+  background: url("./media/cbbg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.btn {
+  position: absolute;
+  bottom: 10vh;
+  padding: 15px 40px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #fff;
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* about section */
+
+.about {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about p {
+  margin-bottom: 1rem;
+}
+
+.card-container {
+  display: grid;
+  width: 75%;
+  grid-template: 10% 10% 60% 10% 10% / 45% 5% 10% 40%;
+  min-height: 90vh;
+}
+
+.about-card-desc,
+.about-card-img {
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.about-card-img {
+  grid-column: 1/4;
+  grid-row: 2/5;
+  background: url("./media/ja.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.about-card-desc {
+  grid-column: 2/5;
+  grid-row: 3/4;
+  background: #fff;
+  padding: 2rem;
+  position: relative;
+}
+
+.about-me {
+  width: 85%;
+  margin: auto;
+}
+
+.about-card-desc .btn {
+  border-color: #f39f22;
+  color: #f39f22;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+/* recent posts preview */
+
+.post-preview {
+  display: flex;
+  flex-direction: column;
+}
+
+/* registration page */
+
+.register,
+.login {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 95vh;
+  position: relative;
+}
+
+.register form,
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* error popup */
+
+.err-popup {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  color: #f39f22;
+}
