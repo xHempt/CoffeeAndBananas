@@ -14,7 +14,7 @@ html {
 
 body {
   min-height: 100vh;
-  background: #333;
+  background: #444;
 }
 
 a {
@@ -26,12 +26,30 @@ h1 {
   font-size: clamp(2.5rem, 4.5vw, 6rem);
 }
 
+h2 {
+  font-size: clamp(1.5rem, 1.5vw, 4rem);
+}
+
+h3 {
+  font-size: clamp(1.75rem, 2vw, 5rem);
+}
+
 p {
-  font-size: clamp(0.2rem, 0.75vw, 1.5rem);
+  font-size: clamp(0.4rem, 0.85vw, 1.5rem);
 }
 
 .gold {
   color: #f39f22;
+}
+
+.muted {
+  color: rgb(116, 116, 116);
+}
+
+.container {
+  position: relative;
+  padding: 1rem;
+  background: #fff;
 }
 
 /*================================================
@@ -131,6 +149,43 @@ header input {
 }
 
 /*================================================
+                    FOOTER
+  ================================================*/
+
+footer {
+  min-height: 7.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+footer nav {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.facebook,
+.instagram,
+.mail {
+  transition: all 0.2s ease;
+}
+
+.facebook:hover {
+  color: rgb(18, 18, 231);
+}
+
+.instagram:hover {
+  color: rgb(194, 31, 226);
+}
+
+.mail:hover {
+  color: rgb(72, 195, 236);
+}
+
+/*================================================
                     MAIN PAGE
   ================================================*/
 
@@ -180,7 +235,10 @@ header input {
 }
 
 .about-card-desc,
-.about-card-img {
+.about-card-img,
+.preview-post-desc,
+.container,
+.preview-post-img {
   box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.25);
 }
 
@@ -196,8 +254,15 @@ header input {
   grid-column: 2/5;
   grid-row: 3/4;
   background: #fff;
-  padding: 2rem;
   position: relative;
+  transition: all 0.2s ease;
+  padding-top: 2rem;
+}
+
+.about-card-desc:hover,
+.preview-post-desc:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 20px 15px 15px rgba(0, 0, 0, 0.25);
 }
 
 .about-me {
@@ -215,15 +280,85 @@ header input {
 
 /* recent posts preview */
 
+.post-section h1 {
+  text-align: center;
+  border-bottom: 3px solid #f39f22;
+}
+
 .post-preview {
+  width: 75%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 60% 35%;
+  gap: 5%;
+}
+
+.preview-post {
+  padding: 1rem;
+  margin: auto;
+  display: grid;
+  min-height: 350px;
+  grid-template: 20% 60% 20% / 35% 15% 37.5% 12.5%;
+}
+
+.preview-post-img {
+  grid-column: 1/4;
+  grid-row: 1/4;
+}
+
+.preview-post-desc {
+  grid-column: 2/5;
+  grid-row: 2/3;
+  background: #fff;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
+}
+
+.preview-post-read {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-post-date {
+  font-size: 75%;
+}
+
+.preview-post-content,
+.preview-post-headline {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.preview-post-likes {
+  align-self: flex-end;
+}
+
+.categories {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.categories ul {
+  list-style: none;
+}
+
+.categories li {
+  margin: 1rem 0;
 }
 
 /* registration page */
 
 .register,
-.login {
+.login,
+.access-denied,
+.new-post {
+  background: #333;
   color: #fff;
   display: flex;
   align-items: center;
@@ -246,4 +381,43 @@ header input {
   bottom: 10%;
   transform: translateX(-50%);
   color: #f39f22;
+}
+
+/* access denied page */
+
+.access-denied h1 {
+  max-width: 75%;
+  text-align: center;
+}
+
+/* add post page */
+
+.new-post {
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.post-form * {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.post-form input,
+.post-form textarea {
+  padding: 5px;
+}
+
+.post-form button {
+  width: 150px;
+  padding: 5px 0;
 }

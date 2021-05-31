@@ -2,7 +2,7 @@ import React from 'react'
 import search from '../media/lupa.svg'
 import { Link, withRouter } from 'react-router-dom'
 
-export default withRouter(function Header({ name, onLogout }) {
+export default withRouter(function Header({ name, onLogout, op }) {
     function logOut() {
         onLogout('')
         window.location.reload()
@@ -13,19 +13,22 @@ export default withRouter(function Header({ name, onLogout }) {
             <nav>
                 <ul>
                     <li>
-                        <a href="#about">Self Development</a>
+                        <Link to="/"><i className="fa fa-home"></i></Link>
                     </li>
                     <li>
-                        <a href="#about">Time Management</a>
+                        <Link to="/category/self-development">Self Development</Link>
                     </li>
                     <li>
-                        <a href="#about">Web Development</a>
+                        <Link to="/category/time-management">Time Management</Link>
                     </li>
                     <li>
-                        <a href="#about">Tutorials</a>
+                        <Link to="/category/web-development">Web Development</Link>
                     </li>
                     <li>
-                        <a href="#about">TOP</a>
+                        <Link to="/category/tutorials">Tutorials</Link>
+                    </li>
+                    <li>
+                        <Link to="/category/top">TOP</Link>
                     </li>
                 </ul>
                 <ul>
@@ -39,6 +42,13 @@ export default withRouter(function Header({ name, onLogout }) {
                     </li>
                     { name 
                     ?   <>
+                            { op === '1' ? 
+                            <>
+                                <li>
+                                    <Link to="/addpost" className="gold">+</Link>
+                                </li>
+                            </> 
+                            : <></> }
                             <li>
                                 <p>Hello <span className="gold">{name}</span>!</p>
                             </li>
