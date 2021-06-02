@@ -16,7 +16,7 @@ export default withRouter(function PostsPreview({ id, likes }) {
     }, [])
 
     return (
-        <div className="post-section" id="recent-posts"> 
+        <section className="post-section" id="recent-posts"> 
             <h1 className="gold">RECENT POSTS</h1>
             <div className="post-preview">
                 <div className="posts">
@@ -27,24 +27,24 @@ export default withRouter(function PostsPreview({ id, likes }) {
                         <h3>CATEGORIES</h3>
                         <ul>
                             <li>
-                                <Link to="/category/self-development" className="gold">Self Development</Link>
+                                <Link to="/category/?name=Self-Development" className="gold">Self Development</Link>
                             </li>
                             <li>
-                                <Link to="/category/time-management" className="gold">Time Management</Link>
+                                <Link to="/category/?name=Time-Management" className="gold">Time Management</Link>
                             </li>
                             <li>
-                                <Link to="/category/web-development" className="gold">Web Development</Link>
+                                <Link to="/category/?name=Web-Development" className="gold">Web Development</Link>
                             </li>
                             <li>
-                                <Link to="/category/tutorials" className="gold">Tutorials</Link>
+                                <Link to="/category/?name=Tutorial" className="gold">Tutorials</Link>
                             </li>
                             <li>
-                                <Link to="/category/top" className="gold">Top Posts</Link>
+                                <Link to="/category/?name=Top" className="gold">Top Posts</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 })

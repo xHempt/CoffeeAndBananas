@@ -8,6 +8,8 @@ import AddPost from './AddPost'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import useLocalStorage from '../hooks/useLocalStorage';
 import Footer from './Footer'
+import Post from './Post'
+import Categories from './Categories'
 
 export default function App() {
   const [id, setId] = useLocalStorage('id', '')
@@ -38,6 +40,8 @@ export default function App() {
           <Route path="/addpost" exact component={() => <AddPost op={op} />} />
           <Route path="/register" exact component={() => <Register />} />
           <Route path="/login" exact component={() => <Login onLogin={setId} />}/>
+          <Route path="/post" exact component={() => <Post id={id} liked={likes} />} />
+          <Route path="/category" exact component={() => <Categories id={id} likes={likes} />} />
         </Switch>
         <Footer />
       </Router>

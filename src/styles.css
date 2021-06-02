@@ -35,7 +35,7 @@ h3 {
 }
 
 p {
-  font-size: clamp(0.4rem, 0.85vw, 1.5rem);
+  font-size: clamp(0.4rem, 1vw, 1.5rem);
 }
 
 .gold {
@@ -193,7 +193,7 @@ footer nav {
 
 .land {
   position: relative;
-  height: 80vh;
+  min-height: 80vh;
   display: grid;
   place-items: center;
   color: #fff;
@@ -201,7 +201,6 @@ footer nav {
   background: url("./media/cbbg.png") no-repeat center center fixed;
   background-size: cover;
 }
-
 .btn {
   position: absolute;
   bottom: 10vh;
@@ -280,9 +279,14 @@ footer nav {
 
 /* recent posts preview */
 
+.post-section {
+  padding-bottom: 1rem;
+}
+
 .post-section h1 {
   text-align: center;
   border-bottom: 3px solid #f39f22;
+  margin-bottom: 1rem;
 }
 
 .post-preview {
@@ -340,8 +344,12 @@ footer nav {
 }
 
 .categories {
-  padding-top: 1rem;
   text-align: center;
+}
+
+.categories .container {
+  margin: 1rem 0;
+  min-height: 300px;
 }
 
 .categories ul {
@@ -420,4 +428,74 @@ footer nav {
 .post-form button {
   width: 150px;
   padding: 5px 0;
+}
+
+/*================================================
+                    POST PAGE
+  ================================================*/
+
+.post {
+  min-height: 87.5vh;
+}
+
+.post-land {
+  min-height: 80vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: radial-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+}
+
+.post-land h1 {
+  color: #fff;
+  z-index: 3;
+}
+
+.post-desc {
+  min-height: 17.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.post-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-content {
+  width: 40%;
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.actual-content {
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+/*================================================
+                 CATEGORY PAGE
+  ================================================*/
+
+.category-posts {
+  width: 45%;
+  min-height: 87.5vh;
+  margin: 0 auto;
 }

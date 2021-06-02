@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default function PreviewPost({ post, id, liked }) {
@@ -12,7 +11,6 @@ export default function PreviewPost({ post, id, liked }) {
         }
         axios.post('/api/like', data)
             .then((res) => {
-                console.log(res.data)
                 if (res.data.msg === 'login') {
                     window.location.replace('/login')
                 } else if (res.data.msg === 'Post liked!') {
@@ -26,12 +24,16 @@ export default function PreviewPost({ post, id, liked }) {
 
     const path = `/post/?id=${post._id}`
 
+    function handleRedirect() {
+        window.location.assign(path)
+    }
+
     return (
         <div className="preview-post">
-            <div className="preview-post-img" style={{backgroundImage: `url(${post.background})`, backgroundSize: 'cover', backgroundPosition: 'center center' }}>
+            <div className="preview-post-img" style={{backgroundImage: `url(/${post.background})`, backgroundSize: 'cover', backgroundPosition: 'center center' }}>
             </div>
             <div className="preview-post-desc">
-                <div>
+                <article>
                     <div className="preview-post-category gold">
                         {post.category}
                     </div>
@@ -46,14 +48,14 @@ export default function PreviewPost({ post, id, liked }) {
                     <div className="preview-post-content">
                         {post.content}
                     </div>
-                </div>
+                </article>
                 <div className="preview-post-read">
-                    <Link to={path} className="gold">
+                    <span onClick={handleRedirect} style={{cursor: 'pointer'}} className="gold">
                         READ MORE &#62;
-                    </Link>
+                    </span>
                     <span className={newLiked || liked ? 'gold' : ''}>
                         <i className="fa fa-thumbs-up" style={{cursor: 'pointer'}} onClick={handleLike}></i>
-                        {newLiked ? post.likes : post.likes - 1}
+                        <span> {newLiked ? post.likes : post.likes - 1}</span>
                     </span>
                 </div>
             </div>

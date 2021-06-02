@@ -21,6 +21,7 @@ export default function NewPostForm() {
 
     function handleBackgroundChange(e) {
         setBackground(e.target.files[0])
+        console.log(background)
     }
 
     function handlePost(e) {
@@ -41,6 +42,10 @@ export default function NewPostForm() {
 
         axios.post('/api/post', fd)
             .then(() => window.location.replace('/'))
+            .catch((err) => console.log(err));
+
+        axios.post('/api/sendmail', data)
+            .then(() => console.log('Emails sent!'))
             .catch((err) => console.log(err))
     }
 
@@ -54,7 +59,7 @@ export default function NewPostForm() {
                 </label>
                 <select name="category" id="category" onChange={handleCatChange} value={category}>
                         <option value="Self Development">Self Development</option>
-                        <option value="Time management">Time management</option>
+                        <option value="Time Management">Time management</option>
                         <option value="Web Development">Web Development</option>
                         <option value="Tutorial">Tutorial</option>
                 </select>
