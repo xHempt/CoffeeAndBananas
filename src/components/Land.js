@@ -7,7 +7,7 @@ export default function Land() {
                 <h1>COFFEE <span className="gold">&</span> BANANAS</h1>
                 <h3>A blog about self development and productivity</h3>
             </div>
-            <a href="#about" className="btn">READ MORE &#62;</a>
+            <a href="#recent-posts" className="btn">READ MORE &#62;</a>
         </section>
     )
 }

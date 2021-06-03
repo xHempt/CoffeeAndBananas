@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 
 export default function Post({ id, liked }) {
@@ -6,6 +6,7 @@ export default function Post({ id, liked }) {
     const urlParams = new URLSearchParams(queryString)
     const postID = urlParams.get("id")
     const [postData, setPostData] = useState({});
+    const commentContent = useRef('')
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -40,6 +41,26 @@ export default function Post({ id, liked }) {
             .catch((err) => console.log(err))
     }
 
+    function handleComment(e) {
+        e.preventDefault()
+    
+        const data = {
+            postID: postID,
+            userID: id,
+            content: commentContent.current.value
+        }
+    
+        axios.post('/api/addcomment', data)
+            .then((res) => {
+                if(res.data.msg === 'login') {
+                    window.location.replace('/login')
+                } else {
+                    window.location.reload()
+                }
+            })
+            .catch((err) => console.log(err))
+    }
+
     return (
         <article className="post">
             <div className="post-land" style={{backgroundImage: `url(/${postData.background})`}}>
@@ -53,7 +74,7 @@ export default function Post({ id, liked }) {
                         <span className="muted">{postData.date}</span>
                     </div>
                     <div className="actual-content">
-                        <p>{postData.content}</p>
+                        <pre>{postData.content}</pre>
                     </div>
                     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                         <span className={newLiked ? 'gold' : ''}>
@@ -61,6 +82,26 @@ export default function Post({ id, liked }) {
                             <span> {newLiked || liked ? postData.likes - 1 : 'Like'}</span>
                         </span>
                     </div>
+                    <div className="comments">
+                        <h2>Comments: { postData.comments ? postData.comments.length : 0 }</h2>
+                        { postData.comments ? 
+                        postData.comments.map((comment, index) => (
+                            <div className="comment" key={index}>
+                                <div className="comment-sender">
+                                    <span className="gold comment-sender-name">{comment.name}</span>
+                                    <span className="muted comment-sender-date">{comment.date}</span>
+                                </div>
+                                <div className="comment-content">
+                                    <p>{comment.content}</p>
+                                </div>
+                            </div>
+                        ))    
+                        : <></>}
+                    </div>
+                    <form onSubmit={handleComment}>
+                        <input type="text" placeholder="Write a comment" required ref={commentContent} />
+                        <input type="submit" value="COMMENT" className="sign-up" />
+                    </form>
                 </div>
             </div>
         </article>

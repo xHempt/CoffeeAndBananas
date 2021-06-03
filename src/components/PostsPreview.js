@@ -17,7 +17,7 @@ export default withRouter(function PostsPreview({ id, likes }) {
 
     return (
         <section className="post-section" id="recent-posts"> 
-            <h1 className="gold">RECENT POSTS</h1>
+            <h1>RECENT POSTS</h1>
             <div className="post-preview">
                 <div className="posts">
                     {posts.map((post, index) => (<PreviewPost post={post} key={index} id={id} liked={ likes.includes(post._id) ? true : false } />))}

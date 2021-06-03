@@ -30,23 +30,26 @@ export default function PreviewPost({ post, id, liked }) {
 
     return (
         <div className="preview-post">
-            <div className="preview-post-img" style={{backgroundImage: `url(/${post.background})`, backgroundSize: 'cover', backgroundPosition: 'center center' }}>
-            </div>
+            <div className="preview-post-img" style={{backgroundImage: `url(/${post.background})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} />
             <div className="preview-post-desc">
                 <article>
-                    <div className="preview-post-category gold">
-                        {post.category}
+                    <div className="preview-post-category">
+                        <span className="gold">
+                            {post.category}
+                        </span>
+                        <span className="preview-post-date muted">
+                            {post.date}
+                        </span>
                     </div>
                     <div className="preview-post-headline">
                         <h2>
                             {post.headline}    
                         </h2>
                     </div>
-                    <div className="preview-post-date muted">
-                        {post.date}
-                    </div>
                     <div className="preview-post-content">
-                        {post.content}
+                        <p>    
+                            {post.content}
+                        </p>
                     </div>
                 </article>
                 <div className="preview-post-read">

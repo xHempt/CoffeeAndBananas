@@ -16,63 +16,58 @@ export default withRouter(function Header({ name, onLogout, op }) {
     }
 
     return (
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/"><i className="fa fa-home"></i></Link>
-                    </li>
-                    <li>
-                        <Link to="/category/?name=Self-Development">Self Development</Link>
-                    </li>
-                    <li>
-                        <Link to="/category/?name=Time-Management">Time Management</Link>
-                    </li>
-                    <li>
-                        <Link to="/category/?name=Web-Development">Web Development</Link>
-                    </li>
-                    <li>
-                        <Link to="/category/?name=Tutorial">Tutorials</Link>
-                    </li>
-                    <li>
-                        <Link to="/category/?name=Top">TOP</Link>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <form onSubmit={handleSearch}>
-                            <button type="submit">
-                                <img src={search} alt="" />
-                            </button>
-                            <input type="text" required placeholder="Search" ref={searchContent} />
-                        </form>
-                    </li>
-                        { name 
-                        ?   <>
-                                { op === '1' ? 
+            <header>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/"><i className="fa fa-home"></i></Link>
+                        </li>
+                        <li>
+                            <Link to="/category/?name=Self-Development">Self Development</Link>
+                        </li>
+                        <li>
+                            <Link to="/category/?name=Time-Management">Time Management</Link>
+                        </li>
+                        <li>
+                            <Link to="/category/?name=Web-Development">Web Development</Link>
+                        </li>
+                        <li>
+                            <Link to="/category/?name=Tutorial">Tutorials</Link>
+                        </li>
+                        <li>
+                            <Link to="/category/?name=Top">TOP</Link>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <form onSubmit={handleSearch}>
+                                <button type="submit">
+                                    <img src={search} alt="" />
+                                </button>
+                                <input type="text" name="search" required placeholder="Search" ref={searchContent} />
+                            </form>
+                        </li>
+                            { name 
+                            ?   <>
+                                    <li>
+                                        <p>Hello <span className="gold">{name}</span>!</p>
+                                    </li>
+                                    <li>
+                                        <button onClick={logOut}>LOG OUT</button>
+                                    </li>
+                                </>
+                            : 
+                            <>
                                 <li>
-                                    <Link to="/addpost" className="gold">+</Link>
-                                </li> 
-                                : <></> }
-                                <li>
-                                    <p>Hello <span className="gold">{name}</span>!</p>
+                                    <Link to="/login">LOG IN</Link>
                                 </li>
                                 <li>
-                                    <button onClick={logOut}>LOG OUT</button>
+                                    <Link to="/register" className="sign-up">SIGN UP</Link>
                                 </li>
                             </>
-                        : 
-                        <>
-                            <li>
-                                <Link to="/login">LOG IN</Link>
-                            </li>
-                            <li>
-                                <Link to="/register" id="sign-up">SIGN UP</Link>
-                            </li>
-                        </>
-                        }
-                </ul>
-            </nav>
-        </header>
+                            }
+                    </ul>
+                </nav>
+            </header>
     )
 })
